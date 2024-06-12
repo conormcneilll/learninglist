@@ -1,8 +1,8 @@
 require('dotenv').config(); // This loads environment variables from .env file
-const mysql = require('mysql2');
+const mysql = require('mysql');
 
 // Then we create a MySQL connection linking the API to my database
-const pool = mysql.createPool({
+const connection = mysql.createPool({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
@@ -12,3 +12,5 @@ const pool = mysql.createPool({
     port:process.env.DB_PORT,
     multipleStatements: true
 });
+
+module.exports = connection;
