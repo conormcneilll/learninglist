@@ -5,14 +5,14 @@ const app = express();
 const API_PORT = process.env.API_PORT || 4000;
 const fs = require('fs');
 
-/// their middleware
+// middleware
 app.use(express.urlencoded({extended: true}));
 
 /// my middleware
 const connection = require("./connection.js");
 const globalErrHandler = require("./middleware/errorHandler");
 
-/// db connection
+/// database connection
 connection.getConnection((err)=>{
     if(err) return console.log(err.message);
     console.log("API Database connection successful.");
@@ -30,7 +30,7 @@ for (const file of routeFiles) {
 /// late middleware
 app.use(globalErrHandler);
 
-/// server
+/// server start
 const server = app.listen(API_PORT, () => {
     console.log(`API started at http://localhost:${server.address().port}/`);
 });
