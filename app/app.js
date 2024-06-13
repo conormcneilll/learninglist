@@ -4,17 +4,24 @@ const sessions = require('express-session');
 const fs = require('fs');
  
 const app = express();
+
 const APP_PORT = process.env.APP_PORT || 3000;
 
 app.use(express.static('static'));
+
 app.set('view engine', 'ejs');
+
+app.use(express.urlencoded({extended: true})); 
+app.use(express.json());
+
 app.use(sessions({
     secret: process.env.SESSIONS_SECRET,
     saveUninitialized: false,
     resave: false
     })
 );
-app.use(express.urlencoded({extended: true})); 
+
+
 
 app.use((req, res, next) => {
     res.locals.query = req.query;
