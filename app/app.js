@@ -14,22 +14,23 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({extended: true})); 
 app.use(express.json());
 
-app.use(sessions({
-    secret: process.env.SESSIONS_SECRET,
-    saveUninitialized: false,
-    resave: false
-    })
-);
+// app.use(sessions({
+//     secret: process.env.SESSION_SECRET,
+//     resave: false,
+//     saveUninitialized: false,
+//     })
+// );
 
 
 
-app.use((req, res, next) => {
-    res.locals.query = req.query;
-    res.locals.user_id = req.session.user_id;
-    res.locals.member = req.session.sess_valid;
-    next();
+// app.use((req, res, next) => {
+//     res.locals.query = req.query;
+//     res.locals.user_id = req.session.user_id;
+//     res.locals.member = req.session.sess_valid;
+//     next();
 
-}); 
+// }); 
+
 const globalErrHandler = require("./middleware/errorHandler");
 
 
