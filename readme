@@ -1,0 +1,10 @@
+
+For added secuirty the website will need a "secret" to run! 
+
+In terminal do the following: 
+
+const crypto = require('crypto');
+const secret = crypto.randomBytes(64).toString('hex');
+console.log(secret);
+
+Place the following into your own .env file ! 
