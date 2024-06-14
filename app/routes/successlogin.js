@@ -9,15 +9,15 @@ router.get('/', (req, res) => {
         message: 'This is a message from your backend'
       });
 
-    // try {
-    //     req.session.sess_valid = true;
-    //     console.log('User login successful');
-    //     res.redirect('/myprofile?message=successful_login');
+    try {
+         req.session.sess_valid = true;
+         console.log('User login successful');
+         res.redirect('/myprofile');
 
-    // } catch (error) {
-    //     console.error('Error encountered during login redirection:', error.message);
-    //     res.redirect('/?message=login_error');
-    // }
+    } catch (error) {
+         console.error('Error encountered during login redirection:', error.message);
+        res.redirect('/home');
+     }
 });
 
 module.exports = router;

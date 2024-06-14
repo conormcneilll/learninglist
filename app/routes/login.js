@@ -45,7 +45,7 @@ router.post('/', async (req, res) => {
                 if (goodstuff) {
                     req.session.user_id = goodstuff.user_id;
                     console.log("Login successful.");
-                    res.redirect("/myprofile"); // Redirect to user's profile page
+                    res.redirect("/successlogin"); // Redirect to user's profile page
                 } else {
                     console.log("Login failed: no data received from the API.");
                     console.log("Response:", response.data.badstuff);
