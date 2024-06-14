@@ -38,8 +38,8 @@ router.post('/', async (req, res) => {
             }
 
             // // If passwords match, create a session or JWT token for authentication
-            req.session.sess_valid = true; // Example session handling
-            req.session.user_id = user.user_id; // Store user_id in session for further authentication
+            req.session.sess_valid = true; 
+            req.session.user_id = user.user_id; 
             
             const goodstuff = {
                 user_id: user.user_id,
