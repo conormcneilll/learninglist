@@ -1,50 +1,57 @@
-// const express = require("express");
-// const router = express.Router();
-// const connection = require("../connection.js");
+const express = require('express');
+const router = express.Router();
+const connection = require('../connection');
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
-// router.post('/', (req, res)=> { 
+// Handle POST request to /login
+router.post('/', async (req, res) => {
+    const { username, passwordraw } = req.body;
 
-//     console.log("someones logging in!")
+    // Validate inputs
+    if (!username || !passwordraw) {
+        return res.status(400).json({ badstuff: 'Username and password are required.' });
+    }
 
-//     let username = req.body.username;
-//     let passwordraw = req.body.passwordraw;
+    try {
+        // Check if the user exists in the database
+        const getUserQuery = 'SELECT * FROM Users WHERE username = ?';
+        connection.query(getUserQuery, [username], async (err, results) => {
+            if (err) {
+                console.error('Database query error:', err);
+                return res.status(500).json({ badstuff: 'Database query error.' });
+            }
 
-//     let loginQ = `#Get the salt which is stored in clear text
-//     SELECT @saltInUse := SUBSTRING(password, 1, 6) FROM user WHERE username = ?;
-    
-//     #Get the hash of the salted password entered by the user at SIGN UP
-//     SELECT @storedSaltedHashInUse := SUBSTRING(password, 7, 40) FROM user WHERE username = ?;
-    
-//     #Concat our salt in use and our login password attempt, then hash them.
-//     SET @saltedHash = SHA1(CONCAT(@saltInUse, ?));
-    
-//     #Return the user id
-//     SELECT user_id FROM user WHERE username = ? AND password = CONCAT(@saltInUse, @saltedHash);`;
-    
-//     connection.query(loginQ, [username, username, passwordraw, username], (err, data)=>{
+            // Check if user was found
+            if (results.length === 0) {
+                return res.status(401).json({ badstuff: 'You dont.' });
+            }
 
-//         if (err) {
-//             res.json({badstuff: err});
-//             return; 
-//         }; 
+            const user = results[0];
+            
+            // Compare the provided password with the hashed password stored in the database
+            const match = await bcrypt.compare(passwordraw, user.password);
 
-//         console.log(data)
-//         let goodstuff = data[3][0];
-//         console.log(goodstuff);
-       
-//         if (goodstuff) {
-//             goodstuff.apimessage = `${username} logged in.`;
-//             goodstuff.username = username;
-//             res.json({goodstuff: goodstuff}); 
-//         } else {
-//             let badstuff = {
-//                 apimessage: "Login details invalid."
-//             };
-//             res.json({badstuff: badstuff});
-//         };
+            if (!match) {
+                return res.status(401).json({ badstuff: 'Username or password is incorrect.' });
+            }
 
-//     });
+            // If passwords match, create a session or JWT token for authentication
+            req.session.sess_valid = true; // Example session handling
+            req.session.user_id = user.user_id; // Store user_id in session for further authentication
+            
+            const goodstuff = {
+                user_id: user.user_id,
+                username: user.username,
+                apimessage: 'Login successful.'
+            };
 
-// });
+            return res.status(200).json({ goodstuff });
+        });
+    } catch (err) {
+        console.error('Error during login process:', err);
+        res.status(500).json({ badstuff: 'Internal server error.' });
+    }
+});
 
-// module.exports = router;
+module.exports = router;
