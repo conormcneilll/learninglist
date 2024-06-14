@@ -1,4 +1,4 @@
-require('dotenv').config(); // This loads environment variables from .env file
+require('dotenv').config({ path: __dirname + '/../.env' }); // This loads environment variables from .env file
 const mysql = require('mysql');
 
 // Then we create a MySQL connection linking the API to my database
@@ -12,5 +12,13 @@ const connection = mysql.createPool({
     port:process.env.DB_PORT,
     multipleStatements: true
 });
+
+// connection.connect((err) => {
+//     if (err) {
+//         console.error('Error connecting to the database:', err.stack);
+//         return;
+//     }
+//     console.log('Connected to the database', connection.threadId);
+// });
 
 module.exports = connection;
