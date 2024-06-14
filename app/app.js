@@ -22,8 +22,6 @@ app.use(sessions({
     })
 );
 
-
-
 app.use((req, res, next) => {
     res.locals.query = req.query;
     res.locals.user_id = req.session.user_id;
