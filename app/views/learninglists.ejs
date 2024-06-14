@@ -1,0 +1,24 @@
+<%- include('header') %>
+
+<div class="nice hero">
+    <h1>Browse OUR Lists</h1>
+    <h3>Remember to share the word!</h3>
+    
+    <div class="nice">
+        <h5>Learning Lists:</h5>
+
+        <div class="flex-container">
+            <% learninglistdata.forEach((Learnlist) => { %>
+                <div>
+                    <a class="btn btn-outline-info" href="/learninglists?id=<%= Learnlist.learnlist_id %>">
+                        <h2><%= Learnlist.title %></h2>
+                        <p><%= Learnlist.description %></p>
+                        <p>Rating: <%= Learnlist.rating %></p>
+                    </a>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+</div>
+
+<%- include('footer') %>

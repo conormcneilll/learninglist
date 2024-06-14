@@ -1,0 +1,26 @@
+<%- include('header') %>
+
+<div class="nice hero">
+    <h1>Browse OUR VIDEOS</h1>
+    <h3>Remember to share the word!</h3>
+    
+    <div class="nice">
+        <h5>Videos</h5>
+
+        <div class="flex-container">
+            <% browsevideosdata.forEach((VideoTutorial) => { %>
+                <div class="video-item">
+                    <h2><%= VideoTutorial.title %></h2>
+                    <p><%= VideoTutorial.subject_topic %></p>
+                    <video width="320" height="240" controls>
+                        <source src="<%= VideoTutorial.url %>" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+
+</div>
+
+<%- include('footer') %>
