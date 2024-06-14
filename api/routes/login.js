@@ -1,71 +1,50 @@
-const express = require("express");
-const router = express.Router();
-const axios = require('axios');
+// const express = require("express");
+// const router = express.Router();
+// const connection = require("../connection.js");
 
-const API_PORT = process.env.API_PORT || 4000;
+// router.post('/', (req, res)=> { 
 
-router.get('/', (req, res)=> { 
+//     console.log("someones logging in!")
 
-    try {
+//     let username = req.body.username;
+//     let passwordraw = req.body.passwordraw;
 
-        res.render('login', {
-            title: 'Login', 
-            member: req.session.sess_valid,
-            query: req.query
-        }); 
-
-    } catch (err) {
-
-        console.log("Error in login GET route:", err.message);
-        res.redirect("/?message=loginbug");
-
-    };
-
-});
-
-router.post('/', (req, res)=> { 
-
-    try {
-
-        let username = req.body.username;
-        let passwordraw = req.body.passwordraw;
+//     let loginQ = `#Get the salt which is stored in clear text
+//     SELECT @saltInUse := SUBSTRING(password, 1, 6) FROM user WHERE username = ?;
     
-        const checkdata = {username, passwordraw};
+//     #Get the hash of the salted password entered by the user at SIGN UP
+//     SELECT @storedSaltedHashInUse := SUBSTRING(password, 7, 40) FROM user WHERE username = ?;
     
-        const config = {
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            }
-        };
+//     #Concat our salt in use and our login password attempt, then hash them.
+//     SET @saltedHash = SHA1(CONCAT(@saltInUse, ?));
     
-        let signupEP = `http://localhost:${API_PORT}/login`; 
-        
-        axios.post(signupEP, checkdata, config)
-        .then((results) => {
-
-            console.log(`Login attempt by "${username}"...`);
-
-            let goodstuff = results.data.goodstuff;
+//     #Return the user id
+//     SELECT user_id FROM user WHERE username = ? AND password = CONCAT(@saltInUse, @saltedHash);`;
     
-            if (goodstuff) {
-                req.session.user_id = goodstuff.user_id; 
-                console.log("...succeeded.");
-                res.redirect("/goodlogin");
-            } else {
-                console.log("...failed - no data from the API.");
-                console.log("Response:", results.data.badstuff);
-                res.redirect("/?message=loginfailed"); 
-            };
-    
-        });    
+//     connection.query(loginQ, [username, username, passwordraw, username], (err, data)=>{
 
-    } catch (err) {
+//         if (err) {
+//             res.json({badstuff: err});
+//             return; 
+//         }; 
 
-        console.log("Error in login POST route:", err.message);
-        res.redirect("/?message=loginbug");
+//         console.log(data)
+//         let goodstuff = data[3][0];
+//         console.log(goodstuff);
+       
+//         if (goodstuff) {
+//             goodstuff.apimessage = `${username} logged in.`;
+//             goodstuff.username = username;
+//             res.json({goodstuff: goodstuff}); 
+//         } else {
+//             let badstuff = {
+//                 apimessage: "Login details invalid."
+//             };
+//             res.json({badstuff: badstuff});
+//         };
 
-    };
+//     });
 
-});
+// });
 
-module.exports = router;
+// module.exports = router;
