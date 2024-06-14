@@ -39,8 +39,8 @@ router.post('/', async (req, res) => {
         // Make API call to your backend
         let loginEP = `http://localhost:${API_PORT}/login`;
         axios.post(loginEP, checkdata, config)
-            .then((results) => {
-                let goodstuff = results.data.goodstuff;
+            .then((response) => {
+                let goodstuff = response.data.goodstuff;
 
                 if (goodstuff) {
                     req.session.user_id = goodstuff.user_id;
@@ -48,7 +48,7 @@ router.post('/', async (req, res) => {
                     res.redirect("/myprofile"); // Redirect to user's profile page
                 } else {
                     console.log("Login failed: no data received from the API.");
-                    console.log("Response:", results.data.badstuff);
+                    console.log("Response:", response.data.badstuff);
                     res.redirect("/?message=loginfailed");
                 }
             })

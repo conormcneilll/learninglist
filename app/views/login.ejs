@@ -4,27 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
+    <title>Log In</title>
     <link rel="stylesheet" href="../static/styles.css">
 </head>
-
 <body>
-<%- include('header') %>
+    <% include('header') %>
 
-<div class="nice">
-  <h2>Welcome back</h2>
-</div>
+    <div class="nice">
+        <h2>Welcome back</h2>
+    </div>
 
-<div class="nice">
-  <form method="POST" action="/login">
-    <label>
-      <input name="username" type="text" placeholder="Username">
-      <input name="passwordraw" type="password" placeholder="Password">
-    </label>
-    <button class="btn btn-outline-light">Login</button>
-  </form>
-</div>
+    <div class="nice">
+        <form method="POST" action="/login">
+            <label>
+                <input name="username" type="text" placeholder="Username">
+                <input name="passwordraw" type="password" placeholder="Password">
+            </label>
+            <button class="btn btn-outline-light">Login</button>
+        </form>
+    </div>
 
+    <% include('footer') %>
 </body>
-
-<%- include('footer') %>
+</html>

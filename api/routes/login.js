@@ -4,7 +4,8 @@ const connection = require('../connection');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
-// Handle POST request to /login
+const API_PORT = process.env.API_PORT || 4000;
+
 router.post('/', async (req, res) => {
     const { username, passwordraw } = req.body;
 
@@ -24,7 +25,7 @@ router.post('/', async (req, res) => {
 
             // Check if user was found
             if (results.length === 0) {
-                return res.status(401).json({ badstuff: 'You dont.' });
+                return res.status(401).json({ badstuff: 'Username or password is incorrect.' });
             }
 
             const user = results[0];
@@ -36,7 +37,7 @@ router.post('/', async (req, res) => {
                 return res.status(401).json({ badstuff: 'Username or password is incorrect.' });
             }
 
-            // If passwords match, create a session or JWT token for authentication
+            // // If passwords match, create a session or JWT token for authentication
             req.session.sess_valid = true; // Example session handling
             req.session.user_id = user.user_id; // Store user_id in session for further authentication
             
