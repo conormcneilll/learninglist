@@ -1,25 +1,35 @@
 <%- include('header') %>
 
 <div class="nice hero">
-    <h1>Knowledge is Power</h1>
-    <h3>Learn what others know or Share what you know or stick around and do both!</h3>
+    <h1>Browse OUR Lists</h1>
+    <h3>Remember to share the word!</h3>
     
     <div class="nice">
         <h5>Learning Lists:</h5>
 
-        <div class="flex-container">
-            <% learninglistdata.forEach((Learnlist) => { %>
-                <div>
-                    <a class="btn btn-outline-info" href="/learninglists?id=<%= Learnlist.learnlist_id %>">
-                        <h2><%= Learnlist.title %></h2>
-                        <p><%= Learnlist.description %></p>
-                        <p>Rating: <%= Learnlist.rating %></p>
-                    </a>
+        <div class="card-container">
+            <% for (let i = 0; i < 3 && i < learninglistdata.length; i++) { %>
+                <div class="learning-list-item">
+                    <div class="list-item-card">
+                        <div class="list-item-header">
+                            <h2><%= learninglistdata[i].title %></h2>
+                        </div>
+                        <div class="list-item-content">
+                            <img src="<%= learninglistdata[i].img_url %>" alt="<%= learninglistdata[i].title %> Image" class="list-item-image">
+                            <p><%= learninglistdata[i].description %></p>
+                            <p>Rating: <%= learninglistdata[i].rating %></p>
+                            <a class="btn btn-outline-info" href="/learninglists?id=<%= learninglistdata[i].learnlist_id %>">View Details</a>
+                        </div>
+                    </div>
                 </div>
-            <% }); %>
+
+                <% if (i === 2) { %>
+                
+                    <div class="clearfix"></div>
+                <% } %>
+            <% } %>
         </div>
     </div>
-
 </div>
 
 <%- include('footer') %>

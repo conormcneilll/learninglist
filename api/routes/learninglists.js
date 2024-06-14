@@ -7,7 +7,7 @@ const API_PORT = process.env.API_PORT || 4000;
 router.get('/', (req, res) => { 
     
     const learnlistQ = `
-        SELECT title, description, rating
+        SELECT title, description, rating, img_url
         FROM Learnlist
     `;
 
