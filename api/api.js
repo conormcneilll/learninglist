@@ -1,9 +1,11 @@
-/// imports
-require('dotenv').config();
+require('dotenv').config({ path: __dirname + '/../.env' });
 const express = require("express");
 const app = express();
 const API_PORT = process.env.API_PORT || 4000;
 const fs = require('fs');
+const bcrypt = require ('bcrypt');
+const saltRounds = 10;
+
 
 /// their middleware
 app.use(express.urlencoded({extended: true}));

@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config({ path: __dirname + '/../.env' });
 const express = require("express");
 const sessions = require('express-session');
 const fs = require('fs');
@@ -12,24 +12,25 @@ app.use(express.static('static'));
 app.set('view engine', 'ejs');
 
 app.use(express.urlencoded({extended: true})); 
+
 app.use(express.json());
 
-// app.use(sessions({
-//     secret: process.env.SESSION_SECRET,
-//     resave: false,
-//     saveUninitialized: false,
-//     })
-// );
+app.use(sessions({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    })
+);
 
 
 
-// app.use((req, res, next) => {
-//     res.locals.query = req.query;
-//     res.locals.user_id = req.session.user_id;
-//     res.locals.member = req.session.sess_valid;
-//     next();
+app.use((req, res, next) => {
+    res.locals.query = req.query;
+    res.locals.user_id = req.session.user_id;
+    res.locals.member = req.session.sess_valid;
+    next();
 
-// }); 
+}); 
 
 const globalErrHandler = require("./middleware/errorHandler");
 

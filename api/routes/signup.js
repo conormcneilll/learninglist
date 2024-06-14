@@ -1,62 +1,56 @@
 const express = require("express");
 const router = express.Router();
-const axios = require('axios');
+const connection = require('../connection');
+const bcrypt = require ('bcrypt');
+const saltRounds = 10;
 
 const API_PORT = process.env.API_PORT || 4000;
 
-// router.get('/', (req, res)=>{
+router.post('/', async (req, res) => {
+    const { username, email, passwordraw } = req.body;
 
-//     res.render('signup', {
-//         title: 'Sign up', 
-//         member: false
-//     });
-
-// });
-
-router.post('/', (req, res)=> { 
+    // Validate inputs
+    if (!username || !email || !passwordraw) {
+        return res.status(400).json({ badstuff: 'All fields are required.' });
+    }
 
     try {
-
-        let username = req.body.username;
-        let passwordraw = req.body.passwordraw1;
-
-        const insertdata = {username, passwordraw};
-    
-        const config = {
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
+        // Check if the user already exists
+        const checkUserQuery = 'SELECT * FROM Users WHERE username = ? OR email = ?';
+        connection.query(checkUserQuery, [username, email], async (err, results) => {
+            if (err) {
+                console.error('Database query error:', err);
+                return res.status(500).json({ badstuff: 'Database query error.' });
             }
-        };
-    
-        let signupEP = `http://localhost:${API_PORT}/signup`;
-        
-        axios.post(signupEP, insertdata, config)
-        .then((results) => {
 
-            let goodstuff = results.data.goodstuff;
+            if (results.length > 0) {
+                return res.status(409).json({ badstuff: 'User already exists.' });
+            }
 
-            if (goodstuff) {
+            // Hash the password
+            const hashedPassword = await bcrypt.hash(passwordraw, saltRounds);
 
-                req.session.user_id = goodstuff.insertId;
-                console.log(`${goodstuff.apimessage}. Inserted user_id ${goodstuff.insertId}.`);
-                res.redirect("/goodlogin");
+            // Insert the new user into the database
+            const insertUserQuery = 'INSERT INTO Users (username, email, password) VALUES (?, ?, ?)';
+            connection.query(insertUserQuery, [username, email, hashedPassword], (err, results) => {
+                if (err) {
+                    console.error('Database insert error:', err);
+                    return res.status(500).json({ badstuff: 'Database insert error.' });
+                }
 
-            } else {
+                const goodstuff = {
+                    insertId: results.insertId,
+                    apimessage: 'Successfully Signed UP!'
+                };
 
-                console.log("Signup failed:", results.data.badstuff);
-                res.redirect("/?message=signupfailed");
-
-            };
-
+                return res.status(201).json({ goodstuff });
+            });
         });
-
     } catch (err) {
-        
-        console.log("Error in signup POST route:", err.message);
-        res.redirect("/?message=signupbug");
-
-    };
-
+        console.error('Error during signup process:', err);
+        res.status(500).json({ badstuff: 'Internal server error.' });
+    }
 });
 
-module.exports = router;
+
+module.exports = router
