@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const connection = require('../connection');
 const bcrypt = require('bcrypt');
-const saltRounds = 10;
 
 const API_PORT = process.env.API_PORT || 4000;
 
