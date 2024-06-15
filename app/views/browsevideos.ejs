@@ -1,13 +1,15 @@
 <%- include('header') %>
 
 <div class="nice hero">
-    <h1>Browse OUR VIDEOS</h1>
-    <h3>Remember to share the word!</h3>
-    
+    <h1>Browse our Video Tutorials</h1>
+
+    <h3>Looking for something specific? Use the search function!</h3>
+    <input type="text" id="searchInput" placeholder="Search for videos...">
+
     <div class="nice">
         <h5>Videos</h5>
 
-        <div class="flex-container">
+        <div class="flex-container" id="browseVideosContainer">
             <% browsevideosdata.forEach((VideoTutorial) => { %>
                 <div class="video-item">
                     <h2><%= VideoTutorial.title %></h2>
@@ -19,8 +21,40 @@
                 </div>
             <% }); %>
         </div>
+        <p id="noResultsMessage" style="display:none;">No Videos found. Why not be the first to upload?</p>
     </div>
-
 </div>
 
 <%- include('footer') %>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const searchInput = document.getElementById('searchInput');
+        const browseVideosContainer = document.getElementById('browseVideosContainer');
+        const videoItems = browseVideosContainer.getElementsByClassName('video-item');
+        const noResultsMessage = document.getElementById('noResultsMessage');
+
+        searchInput.addEventListener('input', function () {
+            const searchValue = searchInput.value.trim().toLowerCase();
+
+            let foundMatch = false;
+
+            Array.from(videoItems).forEach(function (item) {
+                const title = item.querySelector('h2').textContent.toLowerCase();
+
+                if (title.includes(searchValue)) {
+                    item.style.display = 'block';
+                    foundMatch = true;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            if (!foundMatch) {
+                noResultsMessage.style.display = 'block';
+            } else {
+                noResultsMessage.style.display = 'none';
+            }
+        });
+    });
+</script>
