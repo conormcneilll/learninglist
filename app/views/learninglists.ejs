@@ -5,26 +5,36 @@
     <h3>Remember to share the word!</h3>
     
     <div class="nice">
-        <h5>Learning Lists:</h5>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search by subject or user..">
+        </div>
+        <h5>Learning Lists</h5>
 
-        <div class="flex-container">
+        <div class="flex-container" id="learningListsContainer">
             <% learninglistdata.forEach((Learnlist) => { %>
                 <div class="learning-list-item">
                     <div class="list-item-card">
                         <div class="list-item-header">
-                            <h2><%= Learnlist.title %></h2>
+                            <h2 class="title"><%= Learnlist.title %></h2>
                         </div>
                         <div class="list-item-content">
                             <img src="<%= Learnlist.img_url %>" alt="<%= Learnlist.title %> Image" class="list-item-image">
+                            <p class="subject">Subject: <%= Learnlist.subject_topic %></p>
                             <p><%= Learnlist.description %></p>
                             <p>Rating: <%= Learnlist.rating %></p>
+                            <p class="username">Created by: <%= Learnlist.username %></p>
                             <a class="btn btn-outline-info" href="/learninglists?id=<%= Learnlist.learnlist_id %>">View Details</a>
                         </div>
                     </div>
                 </div>
             <% }); %>
         </div>
+        <p id="noResultsMessage" style="display:none;">No learning lists found. Why not be the first to make one?</p>
     </div>
 </div>
 
 <%- include('footer') %>
+
+
+<script src="filterlearninglists.js"></script>
+

@@ -7,14 +7,23 @@ const API_PORT = process.env.API_PORT || 4000;
 router.get('/', (req, res) => { 
     
     const learnlistQ = `
-        SELECT title, description, rating, img_url
-        FROM Learnlist
+        SELECT 
+            ll.title, 
+            ll.subject_topic, 
+            ll.description, 
+            ll.rating, 
+            ll.img_url, 
+            u.username
+        FROM 
+            Learnlist ll
+        JOIN 
+            users u ON ll.creator_id = u.user_id;
     `;
 
     connection.query(learnlistQ, (err, data) => { // Corrected variable name to learnlistQ
         if (err) {
             console.error('Database query error:', err);
-            return res.status(500).json({ badstuff: 'Database query error.' });
+            return res.status(500).json({ badstuff: 'Database query error with ll.' });
         }
         
         if (data.length > 0) {
