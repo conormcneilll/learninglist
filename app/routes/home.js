@@ -5,7 +5,7 @@ const axios = require('axios');
 const API_PORT = process.env.API_PORT || 4000;
 
 // Route to render the home page
-router.get('/', async (req, res, next) => {
+router.get('/home', async (req, res, next) => {
     try {
         let learninglistsEP = `http://localhost:${API_PORT}/learninglists`;
 
@@ -19,7 +19,7 @@ router.get('/', async (req, res, next) => {
         });
         
     } catch (err) {
-        
+
         console.error('Error fetching data:', err);
         next(err); // Pass error to the error handling middleware
     }

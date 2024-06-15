@@ -42,8 +42,6 @@ for (const file of routeFiles) {
 	app.use(`/${routePath}`, route);
 }
 
- 
-
 app.use(globalErrHandler);
 
 
