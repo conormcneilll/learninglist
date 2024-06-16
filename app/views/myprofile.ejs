@@ -25,6 +25,8 @@
                     </ul>
                 </div>
             </div>
+            <button onclick="location.href='/edit-profile'" class="edit-button">Edit Profile</button>
+            <button onclick="location.href='/delete-account'" class="delete-button">Delete Account</button>
         </div>
     <% } else { %>
         <p>No user data available</p>
@@ -37,9 +39,6 @@
                 <div class="profile-data">
                     <label>Title:</label> <%= list.title %><br>
                     <label>Subject/Topic:</label> <%= list.subject_topic %><br>
-                    
-                    
-                    
                 </div>
             <% }); %>
         </div>
@@ -57,6 +56,9 @@
                     <label>Description:</label> <%= list.description %><br>
                     <label>Rating:</label> <%= list.rating %><br>
                     <label>Image URL:</label> <%= list.img_url %><br>
+                    <button onclick="location.href='/edit-learnlist/<%= list.id %>'" class="edit-button">Edit Learnlist</button>
+                    <button onclick="location.href='/add-resource/<%= list.id %>'" class="edit-button-3">Add /Resource</button>
+                    <button onclick="location.href='/edit-profile'" class="edit-button-2">Delete Learnlist</button>
                 </div>
             <% }); %>
         </div>
