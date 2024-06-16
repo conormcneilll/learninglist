@@ -6,7 +6,7 @@ const connection = require('../connection');
 router.get('/', async (req, res) => {
     
     const videosQ = `
-        SELECT title, url, subject_topic
+        SELECT title, url
         FROM VideoTutorial
     `;
 
