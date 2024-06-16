@@ -42,5 +42,5 @@ const globalErrHandler = require("./middleware/errorHandler");
 app.use(globalErrHandler);
 
 const server = app.listen(APP_PORT, () => {
-    console.log(`App started at http://localhost:${server.address().port}/home`);
+    console.log(`App started at http://localhost:${server.address().port}/`);
 }); 

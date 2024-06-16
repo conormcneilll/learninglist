@@ -5,7 +5,7 @@ const axios = require('axios');
 const API_PORT = process.env.API_PORT || 4000;
 
 // Route to render the home page
-router.get('/home', async (req, res, next) => {
+router.get('/', async (req, res, next) => {
     try {
         let learninglistsEP = `http://localhost:${API_PORT}/learninglists`;
 
