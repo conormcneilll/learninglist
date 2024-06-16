@@ -29,8 +29,6 @@ app.use((req, res, next) => {
 
 }); 
 
-const globalErrHandler = require("./middleware/errorHandler");
-
 const routeFiles = fs.readdirSync('./routes')
     .filter(file => ( file.endsWith('.js') && !file.startsWith('_') ));
 for (const file of routeFiles) {
@@ -39,6 +37,8 @@ for (const file of routeFiles) {
     if (file=='home.js') routePath="";
 	app.use(`/${routePath}`, route);
 }
+
+const globalErrHandler = require("./middleware/errorHandler");
 app.use(globalErrHandler);
 
 const server = app.listen(APP_PORT, () => {

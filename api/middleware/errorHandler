@@ -1,15 +1,17 @@
- 
-const ErrorHandler = (err, req, res, next) => {
+const handleError = (error, req, res, next) => {
+    if (res.headersSent) {
+        return next(error); // Pass the error to the default Express error handler
+    }
 
     console.log("API error handler responding with an error status.");
-    const errStatus = err.statusCode || 500;
-    const errMsg = err.message || 'API error handler responding with an error status.';
-    res.status(errStatus).json({
+    const statusCode = error.statusCode || 500;
+    const message = error.message || 'Something went wrong';
+
+    res.status(statusCode).json({
         success: false,
-        status: errStatus,
-        message: errMsg
+        status: statusCode,
+        message: message,
     });
-    
 };
 
-module.exports = ErrorHandler;
+module.exports = handleError;
