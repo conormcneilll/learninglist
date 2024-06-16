@@ -4,44 +4,49 @@ const connection = require("../connection.js");
 
 // Route to get favourite learning lists for the logged-in user
 router.get('/', (req, res) => {
-    const username = req.session.username; // Assuming the username is stored in the session
-    if (!username) {
-        return res.status(401).json({ badstuff: "User not logged in" });
-    }
+    
+    try {
+        let { user_id } = req.query;
 
-    const favouritesQ = `
+        // Query to fetch favourite learning lists
+    
+        const favouritesQ = `
         SELECT 
-            l.learnlist_id,
-            l.creator_id,
-            l.title,
-            l.subject_topic,
-            l.description,
-            l.rating,
-            l.img_url,
-            u.username
+            ll.learnlist_id,
+            ll.creator_id,
+            ll.title,
+            ll.subject_topic,
+            ll.description,
+            ll.rating,
+            ll.img_url,
+            u.username,
+            f.user_id,
+            f.learnlist_id
         FROM 
-            FavouriteLearnlist f
+            FavoriteLearnlist f
         JOIN 
-            LearnList l ON f.learnlist_id = l.learnlist_id
+            LearnList ll ON f.learnlist_id = ll.learnlist_id
         JOIN 
-            users u ON l.creator_id = u.user_id
-        JOIN 
-            users u2 ON f.user_id = u2.user_id
+            users u ON ll.creator_id = u.user_id
         WHERE 
-            u2.username = ?;
+            f.user_id = ?;  -- Filter by the user_id parameter
     `;
 
-    connection.query(favouritesQ, [username], (err, data) => {
-        if (err) {
-            return res.status(500).json({ badstuff: err.message });
-        }
+        connection.query(favouritesQ, [user_id], (err, data) => {
+            if (err) {
+                return res.status(500).json({ badstuff: err.message });
+            }
 
-        if (data.length > 0) {
-            return res.json({ goodstuff: data });
-        } else {
-            return res.json({ badstuff: "No favourite learning lists found for this user" });
-        }
-    });
+            if (data.length > 0) {
+                return res.json({ goodstuff: data });
+            } else {
+                return res.json({ badstuff: "No favourite learning lists found for this user" });
+            }
+        });
+    } catch (err) {
+        console.error("Error in GET /favouritelists route:", err.message);
+        res.status(500).json({ badstuff: 'Internal server error' });
+    }
 });
 
 module.exports = router;

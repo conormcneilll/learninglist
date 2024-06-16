@@ -1,9 +1,69 @@
 <%- include('header') %>
 
 <body>
-    <h1>Welcome to Your Profile</h1>
-    
-    <!-- Your profile content here -->
+    <h1>Welcome, <%= userdata.username %>!</h1>
+
+    <% if (userdata) { %>
+        <div class="profile-card">
+            <% if (userdata.profile_picture) { %>
+                <img src="<%= userdata.profile_picture %>" alt="Profile Picture" class="profile-picture">
+            <% } %>
+            <div class="profile-data">
+                <label>Username:</label> <%= userdata.username %><br>
+                <label>City:</label> <%= userdata.city %><br>
+                <label>Occupation:</label> <%= userdata.occupation %><br>
+                <label>Interests:</label>
+                <div class="profile-interests">
+                    <ul>
+                        <% if (Array.isArray(userdata.interests) && userdata.interests.length > 0) { %>
+                            <% userdata.interests.forEach(interest => { %>
+                                <li><%= interest %></li>
+                            <% }); %>
+                        <% } else { %>
+                            <li>No interests listed</li>
+                        <% } %>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    <% } else { %>
+        <p>No user data available</p>
+    <% } %>
+
+    <% if (favouritesdata && favouritesdata.length > 0) { %>
+        <div class="profile-card">
+            <h2>Favourited Learning Lists</h2>
+            <% favouritesdata.forEach(list => { %>
+                <div class="profile-data">
+                    <label>Title:</label> <%= list.title %><br>
+                    <label>Subject/Topic:</label> <%= list.subject_topic %><br>
+                    <label>Description:</label> <%= list.description %><br>
+                    <label>Rating:</label> <%= list.rating %><br>
+                    <label>Image URL:</label> <%= list.img_url %><br>
+                </div>
+            <% }); %>
+        </div>
+    <% } else { %>
+        <p>No favourited learning lists found</p>
+    <% } %>
+
+    <% if (mylistsdata && mylistsdata.length > 0) { %>
+        <div class="profile-card">
+            <h2>Created Learning Lists</h2>
+            <% mylistsdata.forEach(list => { %>
+                <div class="profile-data">
+                    <label>Title:</label> <%= list.title %><br>
+                    <label>Subject/Topic:</label> <%= list.subject_topic %><br>
+                    <label>Description:</label> <%= list.description %><br>
+                    <label>Rating:</label> <%= list.rating %><br>
+                    <label>Image URL:</label> <%= list.img_url %><br>
+                </div>
+            <% }); %>
+        </div>
+    <% } else { %>
+        <p>No created learning lists found</p>
+    <% } %>
+
 </body>
 
 <%- include('footer') %>

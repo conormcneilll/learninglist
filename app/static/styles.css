@@ -70,7 +70,35 @@ body {
     margin-bottom: 10px;
 }
 
-
+.profile-card {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.profile-picture {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+.profile-data {
+    margin-bottom: 10px;
+}
+.profile-data label {
+    font-weight: bold;
+}
+.profile-interests {
+    margin-top: 10px;
+}
+.profile-interests ul {
+    list-style-type: none;
+    padding: 0;
+}
+.profile-interests li {
+    margin-bottom: 5px;
+}
 
 
 .header {

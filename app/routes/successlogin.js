@@ -3,11 +3,8 @@ const router = express.Router();
 const axios = require('axios');
 
 router.get('/', (req, res) => {
-
-    res.render('myprofile', {
-        title: 'Home Page',
-        message: 'This is a message from your backend'
-      });
+     
+     
 
     try {
          req.session.sess_valid = true;

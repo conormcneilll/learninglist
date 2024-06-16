@@ -2,12 +2,9 @@ const express = require("express");
 const router = express.Router();
 const connection = require("../connection.js");
 
-// Route to get learning lists for the logged-in user
 router.get('/', (req, res) => {
-    const username = req.session.username; // Assuming the username is stored in the session
-    if (!username) {
-        return res.status(401).json({ badstuff: "User not logged in" });
-    }
+    
+    let { user_id } = req.query;
 
     const userQ = `
         SELECT 
@@ -18,16 +15,16 @@ router.get('/', (req, res) => {
             l.description,
             l.rating,
             l.img_url,
-            u.username
+            u.username AS creator_username
         FROM 
             LearnList l
         JOIN 
             users u ON l.creator_id = u.user_id
         WHERE 
-            u.username = ?;
+            l.creator_id = ?;
     `;
 
-    connection.query(userQ, [username], (err, data) => {
+    connection.query(userQ, [user_id], (err, data) => {
         if (err) {
             return res.status(500).json({ badstuff: err.message });
         }
