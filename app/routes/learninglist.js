@@ -16,6 +16,7 @@ router.get('/', async (req, res, next) => {
         const response = await axios.get(learninglistEP);
         const learnlist = response.data.goodstuff; 
 
+        console.log('Learnlist data:', learnlist);
         res.render('learninglistdetails', {
             title: 'Learning List Details',
             learnlist: learnlist
