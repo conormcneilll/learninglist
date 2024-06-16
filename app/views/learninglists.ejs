@@ -6,7 +6,7 @@
     
     <div class="nice">
         <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Search by subject or user..">
+            <input type="text" id="searchInput" placeholder="Search subject or user">
         </div>
         <h5>Learning Lists</h5>
 
@@ -23,7 +23,7 @@
                             <p><%= Learnlist.description %></p>
                             <p>Rating: <%= Learnlist.rating %></p>
                             <p class="username">Created by: <%= Learnlist.username %></p>
-                            <a class="btn btn-outline-info" href="/learninglists?id=<%= Learnlist.learnlist_id %>">View Details</a>
+                            <a class="btn btn-outline-info" href="/learninglist?id=<%= Learnlist.learnlist_id %>">View Resources</a>
                         </div>
                     </div>
                 </div>

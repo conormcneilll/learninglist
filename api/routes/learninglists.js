@@ -8,6 +8,7 @@ router.get('/', (req, res) => {
     
     const learnlistQ = `
         SELECT 
+            ll.learnlist_id,
             ll.title, 
             ll.subject_topic, 
             ll.description, 
