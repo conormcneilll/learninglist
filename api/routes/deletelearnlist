@@ -1,0 +1,50 @@
+const express = require("express");
+const router = express.Router();
+const connection = require("../connection.js");
+
+// Route to delete a learning list
+router.delete('/:learnlist_id', (req, res) => {
+    const learnlist_id = req.params.learnlist_id;
+    const user_id = req.session.user_id;
+
+    if (!user_id) {
+        return res.status(401).json({ badstuff: "User not logged in" });
+    }
+
+    // Check if the user is the creator of the learnlist
+    const checkCreatorQ = `
+        SELECT creator_id
+        FROM LearnList
+        WHERE learnlist_id = ?;
+    `;
+
+    connection.query(checkCreatorQ, [learnlist_id], (err, data) => {
+        if (err) {
+            return res.status(500).json({ badstuff: err.message });
+        }
+
+        if (data.length === 0) {
+            return res.status(404).json({ badstuff: "Learnlist not found" });
+        }
+
+        if (data[0].creator_id !== user_id) {
+            return res.status(403).json({ badstuff: "User is not the creator of this learnlist" });
+        }
+
+        // Delete the learnlist
+        const deleteQ = `
+            DELETE FROM LearnList
+            WHERE learnlist_id = ?;
+        `;
+
+        connection.query(deleteQ, [learnlist_id], (err, result) => {
+            if (err) {
+                return res.status(500).json({ badstuff: err.message });
+            }
+
+            return res.json({ goodstuff: "Learnlist deleted successfully" });
+        });
+    });
+});
+
+module.exports = router;
