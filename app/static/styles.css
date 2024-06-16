@@ -18,6 +18,11 @@ body {
     /* Add more styles as needed */
 }
 
+.container {
+    overflow-y: auto; /* Enable vertical scrolling */
+    
+}
+
 .flex-container {
     display: flex;
     justify-content: space-between;

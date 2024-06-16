@@ -1,8 +1,8 @@
 <%- include('header') %>
 
 <div class="nice hero">
-    <h1>Some of our recent contributions!<h1>
-    <h3>Stick around and learn or give some knowledge to others!</h3>
+    <h1>Some of our recent contributions!</h1>
+    <h3>Stick around and learn or give some knowledge </h3>
     
     <div class="nice">
         <h5>Learning Lists:</h5>
@@ -18,7 +18,7 @@
                             <img src="<%= learninglistdata[i].img_url %>" alt="<%= learninglistdata[i].title %> Image" class="list-item-image">
                             <p><%= learninglistdata[i].description %></p>
                             <p>Rating: <%= learninglistdata[i].rating %></p>
-                            <a class="btn btn-outline-info" href="/learninglists?id=<%= learninglistdata[i].learnlist_id %>">View Details</a>
+                            <a class="btn btn-outline-info" href="/learninglists?id=<%= learninglistdata[i].learnlist_id %>">See all lists!</a>
                         </div>
                     </div>
                 </div>
