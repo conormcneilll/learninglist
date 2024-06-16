@@ -2,9 +2,9 @@ require('dotenv').config({ path: __dirname + '/../.env' });
 const express = require("express");
 const sessions = require('express-session');
 const fs = require('fs');
+
  
 const app = express();
-
 const APP_PORT = process.env.APP_PORT || 3000;
 
 app.use(express.static('static'));
@@ -12,7 +12,6 @@ app.use(express.static('static'));
 app.set('view engine', 'ejs');
 
 app.use(express.urlencoded({extended: true})); 
-
 app.use(express.json());
 
 app.use(sessions({
@@ -32,7 +31,6 @@ app.use((req, res, next) => {
 
 const globalErrHandler = require("./middleware/errorHandler");
 
-
 const routeFiles = fs.readdirSync('./routes')
     .filter(file => ( file.endsWith('.js') && !file.startsWith('_') ));
 for (const file of routeFiles) {
@@ -41,9 +39,7 @@ for (const file of routeFiles) {
     if (file=='home.js') routePath="";
 	app.use(`/${routePath}`, route);
 }
-
 app.use(globalErrHandler);
-
 
 const server = app.listen(APP_PORT, () => {
     console.log(`App started at http://localhost:${server.address().port}/`);

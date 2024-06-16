@@ -4,22 +4,26 @@ const axios = require('axios');
 
 const API_PORT = process.env.API_PORT || 4000;
 
-// Handle GET request to /login
+
 router.get('/', (req, res) => {
     try {
         res.render('login', {
             title: 'Log In',
             member: req.session.sess_valid,
             query: req.query
+
         });
+
     } catch (err) {
+
         console.log("Error rendering login page:", err.message);
-        res.redirect("/?message=loginbug");
+        res.redirect("/?message=loginerror");
     }
 });
 
 // Handle POST request to /login
-router.post('/', async (req, res) => {
+router.post('/', (req, res) => {
+
     const { username, passwordraw } = req.body;
 
     // Validate inputs
@@ -36,29 +40,28 @@ router.post('/', async (req, res) => {
             }
         };
 
-        // Make API call to your backend
         let loginEP = `http://localhost:${API_PORT}/login`;
         axios.post(loginEP, checkdata, config)
-            .then((response) => {
-                let goodstuff = response.data.goodstuff;
+            .then((results) => {
+                let goodstuff = results.data.goodstuff;
 
                 if (goodstuff) {
                     req.session.user_id = goodstuff.user_id;
                     console.log("Login successful.");
-                    res.redirect("/successlogin"); // Redirect to user's profile page
+                    res.redirect("/successlogin"); 
                 } else {
                     console.log("Login failed: no data received from the API.");
                     console.log("Response:", response.data.badstuff);
-                    res.redirect("/?message=loginfailed");
+                    res.redirect("/login?message=loginfailed");
                 }
             })
             .catch((error) => {
                 console.error("Error during login API call:", error.message);
-                res.redirect("/?message=loginfailed");
+                res.redirect("/login?message=loginfailed");
             });
     } catch (err) {
         console.error('Error during login process:', err.message);
-        res.redirect("/?message=loginfailed");
+        res.redirect("/login?message=loginfailed");
     }
 });
 
