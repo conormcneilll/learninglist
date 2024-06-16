@@ -4,71 +4,53 @@ const axios = require('axios');
 
 const API_PORT = process.env.API_PORT || 4000;
 
-
-// the below renders the login ejs and will show it or will display error if it doesnt SHOW 
-router.get('/', (req, res)=> { 
-
+router.get('/', (req, res) => {
     try {
-
         res.render('signup', {
-            title: 'Sign Up', 
+            title: 'Sign Up',
             member: req.session.sess_valid,
-            query: req.query
-        }); 
-
+            query: req.query,
+        });
     } catch (err) {
-
         console.log("Error in GETTING Signup route:", err.message);
-        res.redirect("/?message=loginbug");
-
-    };
-
+        res.redirect("/?message=signupbug");
+    }
 });
 
-// This is the part where the front end begins to speak to the back end 
+router.post('/', (req, res, next) => {
+    const { username, email, passwordraw1 } = req.body;
 
-router.post('/', (req, res)=> { 
+    if (!username || !email || !passwordraw1) {
+        return res.status(400).json({ badstuff: 'Username, email, and password are required.' });
+    }
 
-    try {
-
-        let username = req.body.username;
-        let email = req.body.email;
-        let passwordraw = req.body.passwordraw1;
-    
-        const checkdata = {username, email, passwordraw};
-    
-        const config = {
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            }
-        };
-    
-        let signupEP = `http://localhost:${API_PORT}/signup`; 
-        
-        axios.post(signupEP, checkdata, config)
-        .then((results) => {
-
-            let goodstuff = results.data.goodstuff;
-    
-            if (goodstuff) {
-                req.session.user_id = goodstuff.insertId; 
-                console.log("Signup was a success.");
-                res.redirect("/successlogin");
-            } else {
-                console.log("Signup failed: no data received from the API.");
-                console.log("Response:", results.data.badstuff);
-                res.redirect("/?message=loginfailed"); 
-            };
-    
-        });    
-
-    } catch (err) {
-
-        console.log("Error signing UP:", err.message);
-        res.redirect("/?message=signupbug");
-
+    const checkdata = { username, email, passwordraw: passwordraw1 };
+    const config = {
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
     };
 
+    const signupEP = `http://localhost:${API_PORT}/signup`;
+    axios.post(signupEP, checkdata, config)
+        .then((response) => {
+            const goodstuff = response.data.goodstuff;
+
+            if (goodstuff) {
+                req.session.user_id = goodstuff.insertId; // Set user_id in the session
+                req.session.sess_valid = true; // Set session as valid
+                console.log("Signup was a success.");
+                return res.redirect("/successlogin");
+            } else {
+                console.log("Signup failed: no data received from the API.");
+                console.log("Response:", response.data.badstuff);
+                return res.redirect("/signup?message=signupfailed");
+            }
+        })
+        .catch((error) => {
+            console.error("Error during signup API call:", error.message);
+            return res.redirect("/signup?message=signupfailed");
+        });
 });
 
 module.exports = router;
