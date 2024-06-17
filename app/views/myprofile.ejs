@@ -26,7 +26,6 @@
                 </div>
             </div>
             <button onclick="location.href='/edit-profile?id=<%= userdata.user_id %>'" class="edit-button">Edit Profile</button>
-            <button onclick="location.href='/delete-account'" class="delete-button">Delete Account</button>
         </div>
     <% } else { %>
         <p>No user data available</p>
@@ -57,7 +56,10 @@
                     <label>Rating:</label> <%= list.rating %><br>
                     <label>Image URL:</label> <%= list.img_url %><br>
                     <button onclick="location.href='/add-resource?id=<%= list.learnlist_id %>'" class="edit-button-3">Add Resource</button>
-                    <button onclick="location.href='/edit-profile'" class="edit-button-2">Delete Learnlist</button>
+                    <form action="/delete-list" method="post" onsubmit="return confirm('Sure you want to delete this learnlsit? All assocaited resources will go too!')">
+                        <input type="hidden" name="learnlist_id" value="<%= list.learnlist_id %>">
+                        <button type="submit" class="edit-button-2">Delete Learnlist</button>
+                    </form>
                 </div>
             <% }); %>
         </div>
