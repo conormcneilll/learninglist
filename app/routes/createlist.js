@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const axios = require('axios');
 
+
 const API_PORT = process.env.API_PORT || 4000;
 
 router.get('/', (req, res) => {
@@ -13,7 +14,7 @@ router.get('/', (req, res) => {
         });
     } catch (err) {
         console.log("Error rendering create list page:", err.message);
-        res.redirect("/?message=loginerror");
+        res.redirect("/myprofile?message=loginerror");
     }
 });
 
