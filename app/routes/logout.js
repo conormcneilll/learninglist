@@ -10,12 +10,12 @@ router.get('/', (req, res)=> {
 
         req.session.destroy(); 
         console.log("logged out");
-        res.redirect('/home?message=loggedout');
+        res.redirect('/?message=loggedout');
 
     } catch (err) {
 
         console.log("Error in logout route:", err.message);
-        res.redirect("/home?message=logoutbug");
+        res.redirect("/?message=logoutbug");
 
     };
 

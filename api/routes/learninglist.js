@@ -62,4 +62,55 @@ router.get('/', (req, res) => {
     });
 });
 
+
+router.post('/', (req, res) => {
+    const creator_id = req.session.user_id; // Assuming you have the user ID stored in the session
+    const { learnlist_id, title, url, res_type } = req.body;
+
+    // Verify that the learnlist belongs to the user
+    const verifyQuery = `SELECT * FROM Learnlist WHERE learnlist_id = ? AND creator_id = ?`;
+
+    connection.query(verifyQuery, [learnlist_id, creator_id], (err, results) => {
+        if (err) {
+            console.error('Error verifying learnlist ownership:', err);
+            return res.status(500).json({ error: 'Error verifying learnlist ownership.' });
+        }
+
+        if (results.length === 0) {
+            return res.status(403).json({ error: 'You do not have permission to add resources to this learnlist.' });
+        }
+
+        // Insert the resource into the Resource table
+        const addResourceQuery = `
+            INSERT INTO Resource (creator_id, title, url, res_type)
+            VALUES (?, ?, ?, ?);
+        `;
+
+        connection.query(addResourceQuery, [creator_id, title, url, res_type], (err, result) => {
+            if (err) {
+                console.error('Error adding resource:', err);
+                return res.status(500).json({ error: 'Error adding resource.' });
+            }
+
+            const resource_id = result.insertId;
+
+            // Associate the resource with the learnlist in Learnlist_Resource table
+            const addLearnlistResourceQuery = `
+                INSERT INTO Learnlist_Resource (learnlist_id, resource_id)
+                VALUES (?, ?);
+            `;
+
+            connection.query(addLearnlistResourceQuery, [learnlist_id, resource_id], (err) => {
+                if (err) {
+                    console.error('Error associating resource with learnlist:', err);
+                    return res.status(500).json({ error: 'Error associating resource with learnlist.' });
+                }
+
+                res.status(200).json({ message: 'Resource added to learnlist successfully.' });
+            });
+        });
+    });
+});
+
+
 module.exports = router;

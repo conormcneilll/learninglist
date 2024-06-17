@@ -45,6 +45,22 @@ router.post('/', async (req, res) => {
 
                 return res.status(201).json({ goodstuff });
             });
+
+            const insertProfileQuery = `
+            INSERT INTO profile (user_id, username)
+            VALUES (?, ?)
+        `;
+
+        connection.query(insertProfileQuery, [user_id, username], (err, profileResult) => {
+            if (err) {
+                console.error('Error inserting profile:', err);
+                return res.status(500).json({ message: 'Failed to create profile for user' });
+            }
+
+            
+            return res.status(200).json({ message: 'User registered successfully' });
+        });
+
         });
     } catch (err) {
         console.error('Error during signup process:', err);

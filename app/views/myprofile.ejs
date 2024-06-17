@@ -25,7 +25,7 @@
                     </ul>
                 </div>
             </div>
-            <button onclick="location.href='/edit-profile'" class="edit-button">Edit Profile</button>
+            <button onclick="location.href='/edit-profile?id=<%= userdata.user_id %>'" class="edit-button">Edit Profile</button>
             <button onclick="location.href='/delete-account'" class="delete-button">Delete Account</button>
         </div>
     <% } else { %>
@@ -56,8 +56,7 @@
                     <label>Description:</label> <%= list.description %><br>
                     <label>Rating:</label> <%= list.rating %><br>
                     <label>Image URL:</label> <%= list.img_url %><br>
-                    <button onclick="location.href='/edit-learnlist/<%= list.id %>'" class="edit-button">Edit Learnlist</button>
-                    <button onclick="location.href='/add-resource/<%= list.id %>'" class="edit-button-3">Add /Resource</button>
+                    <button onclick="location.href='/add-resource?id=<%= list.learnlist_id %>'" class="edit-button-3">Add Resource</button>
                     <button onclick="location.href='/edit-profile'" class="edit-button-2">Delete Learnlist</button>
                 </div>
             <% }); %>

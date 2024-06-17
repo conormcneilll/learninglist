@@ -1,0 +1,26 @@
+<%- include('header') %>
+
+<div class="container">
+    <h1>Edit Profile</h1>
+    <form action="/edit-profile" method="post">
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city" value="<%= member.city %>" required>
+        <br>
+        
+        <label for="occupation">Occupation:</label>
+        <input type="text" id="occupation" name="occupation" value="<%= member.occupation %>" required>
+        <br>
+        
+        <label for="profile_picture">Profile Picture URL:</label>
+        <input type="text" id="profile_picture" name="profile_picture" value="<%= member.profile_picture %>" required>
+        <br>
+        
+        <label for="interests">Interests:</label>
+        <textarea id="interests" name="interests" rows="4" required><%= member.interests %></textarea>
+        <br>
+        
+        <button type="submit">Update Profile</button>
+    </form>
+</div>
+
+<%- include('footer') %>
