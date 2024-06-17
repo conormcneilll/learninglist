@@ -7,8 +7,9 @@ router.get('/', (req, res) => {
     try {
         let { user_id, sessionuserid } = req.query;
 
+        
         let userclause = '';
-        if (user_id) userclause = ` AND p.user_id = ${user_id}`;
+        if (user_id) userclause = `${user_id}`;
 
         let userQ = `
             SELECT 
@@ -24,7 +25,7 @@ router.get('/', (req, res) => {
             JOIN 
                 users u ON p.user_id = u.user_id
             WHERE 
-                p.user_id = ?${userclause};
+                p.user_id = ${userclause};
         `;
 
         connection.query(userQ, [sessionuserid], (err, data) => {

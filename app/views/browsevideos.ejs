@@ -14,10 +14,10 @@
                 <div class="video-item">
                     <h2><%= VideoTutorial.title %></h2>
                     <p><%= VideoTutorial.subject_topic %></p>
-                    <video width="320" height="240" controls>
-                        <source src="<%= VideoTutorial.url %>" type="video/mp4">
-                        Your browser does not support the video
-                    </video>
+
+                <iframe width="320" height="240"
+                     src="<%= VideoTutorial.url %>"
+                </iframe>
                 </div>
             <% }); %>
         </div>

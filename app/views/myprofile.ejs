@@ -8,22 +8,13 @@
             <% if (userdata.profile_picture) { %>
                 <img src="<%= userdata.profile_picture %>" alt="Profile Picture" class="profile-picture">
             <% } %>
+
+
             <div class="profile-data">
                 <label>Username:</label> <%= userdata.username %><br>
                 <label>City:</label> <%= userdata.city %><br>
                 <label>Occupation:</label> <%= userdata.occupation %><br>
-                <label>Interests:</label>
-                <div class="profile-interests">
-                    <ul>
-                        <% if (Array.isArray(userdata.interests) && userdata.interests.length > 0) { %>
-                            <% userdata.interests.forEach(interest => { %>
-                                <li><%= interest %></li>
-                            <% }); %>
-                        <% } else { %>
-                            <li>No interests listed</li>
-                        <% } %>
-                    </ul>
-                </div>
+                <label>Interests:</label> <%= userdata.interests %><br>
             </div>
             <button onclick="location.href='/edit-profile?id=<%= userdata.user_id %>'" class="edit-button">Edit Profile</button>
         </div>
@@ -33,11 +24,16 @@
 
     <% if (favouritesdata && favouritesdata.length > 0) { %>
         <div class="profile-card">
-            <h2>Favourited Learning Lists</h2>
+            <h2>Favourited Lists</h2>
             <% favouritesdata.forEach(list => { %>
                 <div class="profile-data">
                     <label>Title:</label> <%= list.title %><br>
-                    <label>Subject/Topic:</label> <%= list.subject_topic %><br>
+                    <label>Subject:</label> <%= list.subject_topic %><br>
+                    <form action="/unfavourite" method="POST" style="display:inline;">
+                        <input type="hidden" name="learnlist_id" value="<%= list.learnlist_id %>">
+                        <input type="hidden" name="user_id" value="<%= list.user_id %>">
+                        <button type="submit">Unfavorite</button>
+                    </form>
                 </div>
             <% }); %>
         </div>

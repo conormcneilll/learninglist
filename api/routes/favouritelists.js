@@ -27,9 +27,9 @@ router.get('/', (req, res) => {
         JOIN 
             LearnList ll ON f.learnlist_id = ll.learnlist_id
         JOIN 
-            users u ON ll.creator_id = u.user_id
+            users u ON f.user_id = u.user_id
         WHERE 
-            f.user_id = ?;  -- Filter by the user_id parameter
+            f.user_id = ?; 
     `;
 
         connection.query(favouritesQ, [user_id], (err, data) => {

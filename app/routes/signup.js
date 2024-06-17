@@ -34,10 +34,10 @@ router.post('/', (req, res, next) => {
     const signupEP = `http://localhost:${API_PORT}/signup`;
     axios.post(signupEP, checkdata, config)
         .then((response) => {
-            const goodstuff = response.data.goodstuff;
+            const user_created = response.data.user_id;
 
-            if (goodstuff) {
-                req.session.user_id = goodstuff.insertId; // Set user_id in the session
+            if (user_created) {
+                req.session.user_id = user_created; // Set user_id in the session
                 req.session.sess_valid = true; // Set session as valid
                 console.log("Signup was a success.");
                 return res.redirect("/successlogin");
