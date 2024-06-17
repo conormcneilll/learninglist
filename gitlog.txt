@@ -1,0 +1,846 @@
+commit 687a8bab667d5b711c23776b3ede0013e6ddd10d
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-17T22:57:21+01:00
+
+    not needed
+
+0	1011	package-lock.json
+0	19	package.json
+
+commit 57a592a0a25e50a608f62f668633b34e3d4d741b
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-17T22:52:10+01:00
+
+    FINAL all operational
+
+39	40	api/routes/addfavourite.js
+2	2	api/routes/favouritelists.js
+33	0	api/routes/removefavourite.js
+27	33	api/routes/signup.js
+3	2	api/routes/userdata.js
+3	3	app/routes/signup.js
+77	0	app/routes/unfavourite.js
+10	0	app/static/checkpassword.js
+4	4	app/views/browsevideos.ejs
+10	14	app/views/myprofile.ejs
+
+commit f5352bafb602ce8db24c366bf54de8577becacb1
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-17T05:39:27+01:00
+
+    Favouriting Now Works
+
+50	0	api/routes/addfavourite.js
+2	2	api/routes/learninglist.js
+51	0	app/routes/add-to-favorites.js
+0	0	app/routes/test
+11	1	app/views/learninglistdetails.ejs
+
+commit c362dd0baf2b77c035ef7fe742ff696e40cd5475
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-17T03:55:45+01:00
+
+    Deleting Learniglists fully operational
+
+37	0	api/routes/deletelearninglist.js
+41	0	app/routes/delete-list.js
+1	0	app/routes/myprofile.js
+4	2	app/views/myprofile.ejs
+
+commit 6fd65e7cce308fdd8604c495e9933cb2a401df70
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-17T03:18:33+01:00
+
+    All systems operational
+
+0	37	api/routes/createresource.js
+27	28	api/routes/editprofile.js
+51	0	api/routes/learninglist.js
+16	0	api/routes/signup.js
+111	0	app/package-lock.json
+1	0	app/package.json
+61	0	app/routes/edit-profile.js
+2	2	app/routes/logout.js
+0	0	app/routes/test
+34	0	app/views/addresource.ejs
+26	0	app/views/edit-profile.ejs
+2	3	app/views/myprofile.ejs
+
+commit a65fa6f6ed33e07572e1cd75835c226778b4b1f6
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-17T03:18:11+01:00
+
+    Create Lists Fully Working
+
+2	1	app/routes/createlist.js
+
+commit 0b6a8642abe835c37da6dce5e2bdf684c1c2c87b
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-17T03:17:59+01:00
+
+    Final - All Working
+
+1	1	app/routes/browsevideos.js
+
+commit 6af3ccc8b74741420272a2e1b0d509f630c26ab7
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-17T03:17:40+01:00
+
+    Final - Adding Resources Works
+
+42	0	api/routes/addresource.js
+67	0	app/routes/add-resource.js
+
+commit a5e4bae096cf9d8441c6523167841ee48a0d0882
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-16T21:34:45+01:00
+
+    stating work on adding resources to list
+
+37	0	api/routes/createresource.js
+0	0	app/routes/add-resource.js
+95	6	app/static/styles.css
+5	3	app/views/myprofile.ejs
+
+commit 714e07aba36fa62228657d9fbbb5bee9dbe45e3a
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-16T21:34:21+01:00
+
+    Individual Resources now show for each learnlist
+
+21	3	api/routes/learninglist.js
+1	0	app/routes/learninglist.js
+18	11	app/views/learninglistdetails.ejs
+
+commit 95f14122d1c802b4843bfcab4a8a4cde8063c356
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-16T19:32:31+01:00
+
+    not needed
+
+0	31	api/routes/createResource
+0	50	api/routes/deletelearnlist
+
+commit 24cdcff686ff5c83791c92f415c82249f9c6afb1
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-16T19:32:24+01:00
+
+    Create LearnList Operational
+
+0	32	api/routes/createlearnlist
+39	0	api/routes/createlearnlist.js
+0	71	api/routes/deleteALL
+1	1	app/app.js
+63	0	app/routes/createlist.js
+1	1	app/routes/home.js
+2	0	app/static/styles.css
+23	0	app/views/createlist.ejs
+2	2	app/views/header.ejs
+3	3	app/views/myprofile.ejs
+
+commit 58a8360c2de64ad1a8c04f124f1a13de2690a63c
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-16T16:53:01+01:00
+
+    USER PROFILE WORKS!
+
+17	0	.vscode/launch.json
+40	0	api/routes/editprofile.js
+34	29	api/routes/favouritelists.js
+5	8	api/routes/mylists.js
+43	37	api/routes/userdata.js
+1	1	app/app.js
+1	1	app/generateSecret.js
+92	16	app/routes/myprofile.js
+2	5	app/routes/successlogin.js
+29	1	app/static/styles.css
+63	3	app/views/myprofile.ejs
+1	0	package.json
+
+commit ffd4e558feabff9fda79545fd2981737f505b56e
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-16T04:56:58+01:00
+
+    updated so it now gives sessionid
+
+33	51	app/routes/signup.js
+1	1	app/views/header.ejs
+
+commit 01355449ef34fd9cdbd1d9e89b02b8b14f97fec4
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-16T04:56:44+01:00
+
+    finishing backend requests for funct
+
+31	0	api/routes/createResource
+32	0	api/routes/createlearnlist
+71	0	api/routes/deleteALL
+50	0	api/routes/deletelearnlist
+47	0	api/routes/favouritelists.js
+43	0	api/routes/mylists.js
+45	0	api/routes/userdata.js
+34	0	app/routes/myprofile.js
+
+commit c02ee9a14b8642f876d47e5f2b7c76d6040d9d6d
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-16T04:11:01+01:00
+
+    login and logout affects header dynamics finally!
+
+11	9	api/middleware/errorHandler
+2	2	app/app.js
+7	3	app/middleware/errorHandler.js
+28	40	app/routes/login.js
+24	0	app/routes/logout.js
+1	1	app/views/header.ejs
+
+commit 435b38f000214648cb6a92f1072fa1bd2ea278d6
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-16T04:00:11+01:00
+
+    updated
+
+1	5	app/app.js
+13	10	app/routes/login.js
+7	0	app/views/header.ejs
+
+commit 67ee6a55331b6ad81fc30ad1c014f14a017f2b9e
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-16T02:50:26+01:00
+
+    updated
+
+5	0	app/static/styles.css
+1	1	app/views/browsevideos.ejs
+2	0	app/views/header.ejs
+3	3	app/views/home.ejs
+
+commit 7a5a038f6bfbc57915f16c955ee414fe3c2c92c3
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-16T02:50:17+01:00
+
+    learninglist wont show resources :(
+
+47	0	api/routes/learninglist.js
+1	0	api/routes/learninglists.js
+30	0	app/routes/learninglist.js
+29	0	app/views/learninglistdetails.ejs
+2	2	app/views/learninglists.ejs
+
+commit ea2a7bd2a6da856400ea94b86d14d531db6d479f
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-16T02:48:56+01:00
+
+    works but wont play vids
+
+1	1	api/routes/browsevideos.js
+
+commit 1c0f0ec5a9f84879f3a60820b2be3386d5911947
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-15T21:04:00+01:00
+
+    making fronted prettier
+
+0	0	app/{routes => static}/searchvideos.js
+45	3	app/static/styles.css
+1	2	app/views/browsevideos.ejs
+2	2	app/views/home.ejs
+
+commit 01e6408c213281c06f9c7511d1ab83a2c58bee54
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-15T21:02:56+01:00
+
+    filtering by subject and user works
+
+12	3	api/routes/learninglists.js
+37	0	app/static/filterlearninglists.js
+13	3	app/views/learninglists.ejs
+
+commit 1ba0ae5237e0f0f9677a8a6dccf9e44ccd348700
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-15T18:34:55+01:00
+
+    fixed /home not working
+
+0	2	app/app.js
+2	2	app/routes/home.js
+
+commit b49f33a6936d820f0249f0740a6d93a99f101c6b
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-15T18:34:44+01:00
+
+    fixed the no footer or header error on these pages
+
+1	1	app/views/footer.ejs
+3	3	app/views/login.ejs
+2	2	app/views/myprofile.ejs
+2	2	app/views/signup.ejs
+
+commit a82efe148bb6f5d1a8697782b1198a4f9f2ba071
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-15T18:34:18+01:00
+
+    seperated script from the ejs to keep code neater
+
+29	0	app/routes/searchvideos.js
+2	31	app/views/browsevideos.ejs
+
+commit 30f89ad4dd9ea81dba59b79a2a1616d40881c144
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-15T18:30:00+01:00
+
+    added search function
+
+39	5	app/views/browsevideos.ejs
+
+commit 43885642f3dce38395cbf933714221115153475d
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-14T17:45:28+01:00
+
+    updated CSS for learnign lists to be neat
+
+1	1	api/routes/learninglists.js
+1	1	app/static/styles.css
+22	12	app/views/home.ejs
+12	6	app/views/learninglists.ejs
+
+commit 4dc42d87984d64f1705f7cc3372a32b7deb76985
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-14T16:43:21+01:00
+
+    updated and all working
+
+1	10	api/api.js
+0	1	api/routes/login.js
+1	1	api/routes/signup.js
+20	7	app/routes/home.js
+2	1	app/views/footer.ejs
+21	36	app/views/home.ejs
+4	15	app/views/login.ejs
+4	9	app/views/myprofile.ejs
+7	13	app/views/signup.ejs
+
+commit 3ad74f4b4389bdb370940e7d7c42e68b84bd4d54
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-14T16:42:59+01:00
+
+    updated stylign the frontend
+
+-	-	app/static/logo.ico
+76	4	app/static/styles.css
+10	0	app/views/footer.ejs
+18	7	app/views/header.ejs
+
+commit 84d396c57c7927ee47857248f054855ed951b2ac
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-14T16:42:32+01:00
+
+    fully working displaying database information! YAY
+
+27	0	api/routes/browsevideos.js
+28	0	api/routes/learninglists.js
+27	0	app/routes/browsevideos.js
+27	0	app/routes/learninglists.js
+26	0	app/views/browsevideos.ejs
+24	0	app/views/learninglists.ejs
+
+commit c4e99e2b637876510a6edea2e9be5ebbf512bb57
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-14T04:27:35+01:00
+
+    updated to redirect to myprofile
+
+1	1	app/routes/login.js
+8	8	app/routes/successlogin.js
+
+commit 1410dc44edb11622d9aaf80f5965b0d6d33adc95
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-14T04:21:54+01:00
+
+    working login
+
+2	2	api/routes/login.js
+
+commit 9c7577f8b7466e883a485edb794b2566b3a686f7
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-14T04:20:52+01:00
+
+    updated
+
+0	2	app/app.js
+
+commit 9bc8e9eae3e73378cbffdabd84dc876b460c9682
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-14T04:20:46+01:00
+
+    login fully functional
+
+4	3	api/routes/login.js
+3	3	app/routes/login.js
+16	17	app/views/login.ejs
+
+commit 20e87427320dfef0dc3472fae219b324b604eeda
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-14T04:20:36+01:00
+
+    express sess added
+
+16	0	api/api.js
+51	0	api/package-lock.json
+1	0	api/package.json
+
+commit 52d25ab9586aadb992ef13802f7ad880501645b5
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-14T03:37:51+01:00
+
+    updated
+
+57	50	api/routes/login.js
+40	50	app/routes/login.js
+
+commit cd79e818113da0c5cc046c94922f41cc88aa95ab
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-14T03:19:23+01:00
+
+    login first attempt
+
+42	63	api/routes/login.js
+75	0	app/routes/login.js
+23	0	app/routes/successlogin.js
+19	0	app/static/checkpassword.js
+
+commit ad776848b46209990344bfae22b73097d8ccb0a9
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-14T03:19:11+01:00
+
+    basics updated
+
+9	1	api/connection.js
+548	0	api/package-lock.json
+2	0	api/package.json
+
+commit 4fbb541e629752a72c1080008f22c3ff927b502e
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-14T03:18:55+01:00
+
+    poor front end needs LOTS of work to be nice
+
+-	-	app/static/logo.png
+44	0	app/static/styles.css
+5	13	app/views/footer.ejs
+10	3	app/views/header.ejs
+7	0	app/views/home.ejs
+30	0	app/views/login.ejs
+14	0	app/views/myprofile.ejs
+
+commit 59fded59abb08870b44ac2924ec1121933b369fb
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-14T03:18:26+01:00
+
+    fully working SIGNUP!
+
+4	2	api/api.js
+38	44	api/routes/signup.js
+14	13	app/app.js
+74	0	app/routes/signup.js
+33	0	app/views/signup.ejs
+
+commit 4f69d0095594878cc96fdcb8d8516de3bab2fece
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-13T23:41:11+01:00
+
+    simple header to test
+
+13	14	app/views/header.ejs
+
+commit 658f9f4b547c4fd7d90ac0733ef3bee0efdcee49
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-13T23:41:04+01:00
+
+    simple header to test
+
+13	3	app/views/footer.ejs
+
+commit 6d413bd2bb2c03f1fc2243746bb9072c8709b2a6
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-13T23:40:54+01:00
+
+    working home.js (BASIC)
+
+5	2	app/routes/home.js
+
+commit 63438ddd659fe8b87f31980da80ff54a58afdc43
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-13T23:40:37+01:00
+
+    cancelled out buggy code for now
+
+13	12	app/app.js
+
+commit 3a4af6126c2c4a4c4042597d637f480f7b912dba
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-13T23:40:12+01:00
+
+    partials finally working!
+
+10	6	app/views/home.ejs
+
+commit 1adaf64de307336b6eed17d13e0eead06b8cb007
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-13T22:38:35+01:00
+
+    first stage home.js
+
+12	0	app/routes/home.js
+
+commit 35f8aa813462de27cda83ccf2c184e40d2216000
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-13T22:38:27+01:00
+
+    updated
+
+79	0	app/package-lock.json
+2	0	app/package.json
+6	6	readme
+
+commit d759ef7b0766fbe4747e56815872b9ad03a96d3f
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-13T22:38:15+01:00
+
+    session secret not working
+
+8	1	app/app.js
+
+commit b62cd4a724374f8a317d9e265baba94ae15323ff
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-13T22:03:02+01:00
+
+    read me started with instructions
+
+10	0	readme
+
+commit 3901219b5b07a55a5e56c9f966d7fc8e2fe4ac04
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-13T22:02:31+01:00
+
+    login page empty
+
+0	0	app/views/login.ejs
+
+commit 111b6c2a38b1cc1c99419cd924c8f721931c6b5b
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-13T22:02:08+01:00
+
+    final
+
+6	0	app/generateSecret.js
+
+commit c9e4f5600105d676317466de8b3c12bca665316d
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-13T22:01:53+01:00
+
+    starting ejs for web
+
+3	0	app/views/footer.ejs
+14	0	app/views/header.ejs
+29	0	app/views/home.ejs
+
+commit c173c421042828ed26782686b898d0d5042162ef
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-13T21:36:23+01:00
+
+    multi-use header for website
+
+0	0	app/views/header.ejs
+
+commit a1d59d644ea7a0900a6fc6ca589c5625ebb5dfdc
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-13T21:34:13+01:00
+
+    adding error handler to apps
+
+45	0	app/app.js
+13	0	app/middleware/errorHandler.js
+
+commit 3335888305256e57fb62f0d9b76e21821c89ef11
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-13T20:56:06+01:00
+
+    this will run the frontend of the website
+
+0	0	app/app.js
+
+commit ea2dedbdd40a563be042dac153384279e532c0e4
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-13T20:49:51+01:00
+
+    frontend file for website
+
+1166	0	app/package-lock.json
+21	0	app/package.json
+
+commit 97bafc31b763cde2acd50d5e8591bb10f33d25e3
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-13T20:47:05+01:00
+
+    adding
+
+6	6	api/routes/signup.js
+
+commit 9070890fc590de1daffa71f9c2be0f3e8d60b3fc
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-12T20:57:22+01:00
+
+    added signup API
+
+62	0	api/routes/signup.js
+
+commit 775456e63aa3e7bf819feef4591ef073754454ad
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-12T20:56:58+01:00
+
+    added axios
+
+72	0	api/package-lock.json
+1	0	api/package.json
+
+commit 808302e2fd2b7171128fb37fa3459d515a7714d7
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-12T20:48:40+01:00
+
+    adding first login router
+
+71	0	api/routes/login.js
+
+commit 5a76d64a3d4c761153a5d794d7af4a2945e02fb5
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-12T20:45:26+01:00
+
+    deleting files
+
+0	1	README.md
+0	85	app/app.js
+
+commit 666ae3b57eef3addc2690dde51fa971cba0891f8
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-12T20:18:09+01:00
+
+    Remove unneeded APP file
+
+0	1	APP
+
+commit 88f3c8d2c194f045ff23c4452cb2e4dcfdb925f3
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-12T20:16:31+01:00
+
+    Update .gitignore to ignore .DS_Store
+
+-	-	.DS_Store
+
+commit 5eca57a232e19ea1d4b39259ed43850f518a6c50
+Author: conormcneilll <167910183+conormcneilll@users.noreply.github.com>
+Date:   2024-06-12T20:13:04+01:00
+
+    Adding DS store to gitignore
+
+1	0	.gitignore
+
+commit b1dc8a102cbcd1d173f644ca122dfc56343c3b27
+Merge: d722a83 72628dc
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-12T20:07:22+01:00
+
+    adding routes folder
+
+commit d722a832de3ec2669deffb43e40991eb1a133109
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-12T19:50:57+01:00
+
+    adding untracked files
+
+-	-	.DS_Store
+3	0	.gitignore
+-	-	app/public/.styles.css.icloud
+-	-	app/views/.home.ejs.icloud
+11	0	index.html
+1011	0	package-lock.json
+18	0	package.json
+
+commit 72628dc287faeed2e8189875a8f500101bd544e4
+Author: conormcneilll <167910183+conormcneilll@users.noreply.github.com>
+Date:   2024-06-12T19:40:19+01:00
+
+    Delete api directory for new one
+
+0	17	api/_example
+0	36	api/api.js
+0	17	api/routes/_exampleROUTE
+
+commit d2e4b72530f22c01028552beafc93bf7420c37da
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-12T19:39:50+01:00
+
+    Adding basic API Directory
+
+-	-	api/.DS_Store
+5	3	api/connection.js
+15	0	api/middleware/errorHandler
+88	0	api/package-lock.json
+1	0	api/package.json
+43	29	app/app.js
+
+commit 95abb1924fce6ecfeb0c72cf6bdac8e90187fdb8
+Author: conormcneilll <167910183+conormcneilll@users.noreply.github.com>
+Date:   2024-06-12T19:31:13+01:00
+
+    Final api.js
+    
+    Fully functional - no errors - connects to database and gives successful output
+
+4	4	api/api.js
+
+commit 96e057dcf391fbae5275a15dd9b054aefd2fc648
+Author: conormcneilll <167910183+conormcneilll@users.noreply.github.com>
+Date:   2024-06-12T10:24:04+01:00
+
+    Example ROUTE API
+
+17	0	api/routes/_exampleROUTE
+0	1	api/routes/test
+
+commit 4180e315de97222877b7257fe7eb5ac0cb0a77c9
+Author: conormcneilll <167910183+conormcneilll@users.noreply.github.com>
+Date:   2024-06-12T10:23:24+01:00
+
+    Create test
+
+1	0	api/routes/test
+
+commit 678d5ef1cea063ca0fd3e60219c107fd1ad8614e
+Author: conormcneilll <167910183+conormcneilll@users.noreply.github.com>
+Date:   2024-06-12T10:22:56+01:00
+
+    example API Route
+
+17	0	api/_example
+
+commit 27d024f5a7d59ed06146c41aa7e4dddce8ea1ce1
+Author: Conor McNeill <conor@Conors-MacBook-Air.local>
+Date:   2024-06-12T09:31:28+01:00
+
+    This is the beginnning of the API
+
+-	-	api/.DS_Store
+36	0	api/api.js
+14	0	api/connection.js
+0	0	api/middleware/errorHandler
+1011	0	api/package-lock.json
+18	0	api/package.json
+
+commit f0f985efdfc98ee7d6e7df0ed23aa00edc3462d6
+Author: conormcneilll <167910183+conormcneilll@users.noreply.github.com>
+Date:   2024-06-12T09:29:27+01:00
+
+    API .js will run the backend of the website
+    
+    this will be the database connection and CRUD requests managements
+
+35	0	api/api.js
+
+commit 7c3677c822b230f21da67c1d02b8d24061fbb8ca
+Author: conormcneilll <167910183+conormcneilll@users.noreply.github.com>
+Date:   2024-06-12T09:28:21+01:00
+
+    Create api.js
+    
+    This will run the backend of the website - handling database connection and CRuD requests
+
+1	0	api/api.js
+
+commit fa4918b3e363eaa4e25c79c95bdd69678bf44e83
+Author: conormcneilll <167910183+conormcneilll@users.noreply.github.com>
+Date:   2024-06-12T09:27:25+01:00
+
+    Delete index.html
+
+0	0	index.html
+
+commit 0c1d7fc4a7dbb50a37f42904de2342530d2f39c0
+Author: conormcneilll <167910183+conormcneilll@users.noreply.github.com>
+Date:   2024-06-12T09:25:58+01:00
+
+    Add files via upload
+
+33	0	app/app.js
+
+commit 0e8082eba68b21b6def0675d92bcd0946d6de082
+Author: conormcneilll <167910183+conormcneilll@users.noreply.github.com>
+Date:   2024-06-12T09:25:41+01:00
+
+    Create app.js
+    
+    this will run be the node that will run the front end of the website
+
+1	0	app/app.js
+
+commit 03e1b5d6a19207758f8a7d02fd87b95345b05ec0
+Author: Conor McNeill <conor@Conors-MacBook-Air.local>
+Date:   2024-06-12T09:23:59+01:00
+
+    This is the beginnning of the APP folder that will be the front end of the website
+
+-	-	.DS_Store
+0	14	.gitignore
+34	0	app/app.js
+1011	0	app/package-lock.json
+18	0	app/package.json
+0	0	index.html
+0	1	touch
+
+commit 2374d7330962327dbee3b6e260d23832b084dec9
+Author: conormcneilll <167910183+conormcneilll@users.noreply.github.com>
+Date:   2024-06-12T09:20:04+01:00
+
+    Create APP
+    
+    this is the file that will run the front end of the website and will include various items
+
+1	0	APP
+
+commit 26de9c40875f61483ff597c8495f720f3072a49d
+Author: conormcneilll <167910183+conormcneilll@users.noreply.github.com>
+Date:   2024-06-12T09:19:35+01:00
+
+    Create README.md
+    
+    Started my ReadME which Ill populate with some info and how to run the website locally on the proffessors laptop
+
+1	0	README.md
+
+commit 3db2df0230186e47999a91d29556e9e26786d5c7
+Author: conormcneilll <167910183+conormcneilll@users.noreply.github.com>
+Date:   2024-06-11T23:04:03+01:00
+
+    Update .gitignore
+    
+    Updated to add nod_module and .env and logs to the gitignore and NOT just .env
+
+0	11	.gitignore
+
+commit e8499b4881ace96d5bd643d2a79ccc2a292ccbe6
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-11T22:43:27+01:00
+
+    Add index.html file with basic content
+
+0	0	index.html
+
+commit 906f0768894677bb6a5f9d6062696a1a0ea9c537
+Author: conormcneilll <conormcneill422@gmail.com>
+Date:   2024-06-11T22:40:36+01:00
+
+    Test
+
+-	-	.DS_Store
+14	0	.gitignore
+1	0	touch
