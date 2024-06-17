@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
             ll.title AS learnlist_title,
             ll.subject_topic,
             ll.description,
-            ll.rating,
+            ll.average_rating,
             ll.img_url,
             u.username AS creator_username,
             r.resource_id,
@@ -45,7 +45,7 @@ router.get('/', (req, res) => {
                 learnlist_title: data[0].learnlist_title,
                 subject_topic: data[0].subject_topic,
                 description: data[0].description,
-                rating: data[0].rating,
+                average_rating: data[0].average_rating,
                 img_url: data[0].img_url,
                 creator_username: data[0].creator_username,
                 resources: data.map(row => ({
