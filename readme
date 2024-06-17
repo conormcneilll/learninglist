@@ -1,3 +1,31 @@
+WELCOME TO MY WEBSITE!
+
+https://youtu.be/pM1X1GJ49ek
+
+That is the video link to show full functionality of the website!
+
+TO BEGIN!:
+
+1. download the zip file of this repo to your system
+
+2. Download MAMP and open  http://localhost/phpMyAdmin/
+
+3. Create a new database called learninglist
+
+4. Import learninglist-3-40178155.sql from the zip into the database
+
+5. Install nodeJS into your system https://nodejs.org/en/learn/getting-started/how-to-install-nodejs
+
+6. This is what your.env should look like:
+
+      DB_HOST=<check under MySQL tab when MAMP loads for this info>
+      DB_USER=<check under MySQL tab when MAMP loads for this info>
+      DB_PASSWORD=<check under MySQL tab when MAMP loads for this info>
+      DB_NAME=learninglist
+      DB_PORT=<check under MySQL tab when MAMP loads for this info>
+      API_PORT=4000
+      APP_PORT=3000
+      SESSION_SECRET=<see below>
 
 // For added secuirty the website will need a "secret" to run! 
 
@@ -7,4 +35,16 @@
 // const secret = crypto.randomBytes(64).toString('hex');
 // console.log(secret);
 
-// Place the following into your own .env file ! 
+7. Open two terminals 
+
+8. In the first terminal it will run your API so change directory to learninglist/api
+    run the command 'npm install'(this will install needed dependecies)
+    run command node api.js
+
+9. In the second terminal it will run your APP so change directory to learninglist/app
+    run the command 'npm install'(this will install needed dependecies)
+    run command node api.js
+
+10. ENJOY THE WEBSITE!
+
+
